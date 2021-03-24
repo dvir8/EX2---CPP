@@ -33,18 +33,18 @@ TEST_CASE("GOOD BORAD") {
 TEST_CASE("EROR BORAD"){
             ariel::Board board;
             CHECK_NOTHROW(board.post(50, 100, Direction::Horizontal, "abcd"));
-            CHECK(board.read(49, 101, Direction::Vertical, 3) == string("_c_"));
+            CHECK_FALSE(board.read(49, 101, Direction::Vertical, 3) == string("_c_"));
             CHECK_NOTHROW(board.post(49, 102, Direction::Vertical, "rtz"));
-            CHECK(board.read(50, 101, Direction::Horizontal, 6) == string("abtd__za"));
+            CHECK_FALSE(board.read(50, 101, Direction::Horizontal, 6) == string("abtd__za"));
             CHECK_NOTHROW(board.post(1, 100, Direction::Horizontal, "c"));
-            CHECK((board.read(1, 100, Direction::Vertical, 1) == string("czaza")));
+            CHECK_FALSE((board.read(1, 100, Direction::Vertical, 1) == string("czaza")));
             CHECK_NOTHROW(board.post(25, 50, Direction::Horizontal, "thistrue"));
-            CHECK(board.read(23, 52, Direction::Vertical, 6) == string("__isis___"));
+            CHECK_FALSE(board.read(23, 52, Direction::Vertical, 6) == string("__isis___"));
             CHECK_NOTHROW(board.post(20, 32, Direction::Vertical, "_"));
-            CHECK(board.read(20, 32, Direction::Horizontal, 0) == string("_12"));
+            CHECK_FALSE(board.read(20, 32, Direction::Horizontal, 0) == string("_12"));
             CHECK_NOTHROW(board.post(90, 200, Direction::Horizontal, "cool"));
-            CHECK(board.read(89, 201, Direction::Vertical, 4) == string("_o__1"));
+            CHECK_FALSE(board.read(89, 201, Direction::Vertical, 4) == string("_o__1"));
             CHECK_NOTHROW(board.post(89, 202, Direction::Vertical, "www"));
-            CHECK(board.read(90, 201, Direction::Horizontal,5 ) == string("cwoll"));
+            CHECK_FALSE(board.read(90, 201, Direction::Horizontal,5 ) == string("cwoll"));
 
 }
