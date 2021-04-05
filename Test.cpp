@@ -13,10 +13,14 @@ using namespace ariel;
 
 TEST_CASE("GOOD BORAD") {
             ariel::Board board;
+            CHECK_NOTHROW(board.post(0, 0, Direction::Horizontal, "Reut"));
+            CHECK(board.read(0, 0, Direction::Vertical, 3) == string("Reu"));
+            CHECK(board.read(0, 0, Direction::Vertical, 4) == string("Reut"));
+            CHECK(board.read(0, 0, Direction::Vertical, 5) == string("Reut_"));
             CHECK_NOTHROW(board.post(50, 100, Direction::Horizontal, "abcd"));
             CHECK(board.read(49, 101, Direction::Vertical, 3) == string("_b_"));
             CHECK_NOTHROW(board.post(49, 102, Direction::Vertical, "rtz"));
-            CHECK(board.read(50, 101, Direction::Horizontal, 6) == string("abtd__"));
+            CHECK(board.read(50, 100, Direction::Horizontal, 6) == string("abtd__"));
             CHECK_NOTHROW(board.post(1, 100, Direction::Horizontal, "c"));
             CHECK(board.read(1, 100, Direction::Vertical, 1) == string("c"));
             CHECK_NOTHROW(board.post(25, 50, Direction::Horizontal, "thistrue"));
